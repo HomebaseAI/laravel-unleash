@@ -9,7 +9,7 @@ use MikeFrancis\LaravelUnleash\Strategies\Contracts\Strategy;
 
 class RemoteAddressStrategy implements Strategy
 {
-    public function isEnabled(array $params, Request $request): bool
+    public function isEnabled(array $params, array $constraints, Request $request): bool
     {
         $remoteAddressesString = Arr::get($params, 'remoteAddress', '');
 

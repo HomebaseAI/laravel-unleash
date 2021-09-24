@@ -8,7 +8,7 @@ use MikeFrancis\LaravelUnleash\Strategies\Contracts\Strategy;
 
 class UserWithIdStrategy implements Strategy
 {
-    public function isEnabled(array $params, Request $request): bool
+    public function isEnabled(array $params, array $constraints, Request $request): bool
     {
         $userIds = explode(',', Arr::get($params, 'userIds', ''));
 

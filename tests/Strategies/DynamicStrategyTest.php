@@ -30,7 +30,7 @@ class DynamicStrategyTest extends TestCase
 
         $strategy = $this->createMock(ImplementedStrategy::class);
         $strategy->expects($this->exactly(2))->method('isEnabled')
-            ->with([], $request)
+            ->with([], [], $request)
             ->willReturn(true);
 
         $config = $this->getMockConfig($strategy);
@@ -53,7 +53,7 @@ class DynamicStrategyTest extends TestCase
 
         $strategy = $this->createMock(ImplementedStrategy::class);
         $strategy->expects($this->exactly(2))->method('isEnabled')
-            ->with([], $request, true)
+            ->with([], [], $request, true)
             ->willReturn(true);
 
         $config = $this->getMockConfig($strategy);
@@ -76,7 +76,7 @@ class DynamicStrategyTest extends TestCase
 
         $strategy = $this->createMock(ImplementedStrategy::class);
         $strategy->expects($this->exactly(2))->method('isEnabled')
-            ->with([], $request, 'foo', 'bar', 'baz')
+            ->with([], [], $request, 'foo', 'bar', 'baz')
             ->willReturn(true);
 
         $config = $this->getMockConfig($strategy);

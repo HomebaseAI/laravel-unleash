@@ -12,5 +12,5 @@ interface DynamicStrategy
      * @param mixed $args An arbitrary number of arguments passed to isFeatureEnabled/Disabled
      * @return bool
      */
-    public function isEnabled(array $params, Request $request, ...$args): bool;
+    public function isEnabled(array $params, array $constraints, Request $request, ...$args): bool;
 }

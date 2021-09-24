@@ -14,6 +14,7 @@ class UserWithIdStrategyTest extends TestCase
         $params = [
             'userIds' => '123,456',
         ];
+        $constraints = [];
 
         $userMock = $this->createMock(Guard::class);
         $userMock->expects($this->once())->method('id')->willReturn(123);
@@ -22,7 +23,7 @@ class UserWithIdStrategyTest extends TestCase
 
         $strategy = new UserWithIdStrategy();
 
-        $this->assertTrue($strategy->isEnabled($params, $request));
+        $this->assertTrue($strategy->isEnabled($params, $constraints, $request));
     }
 
     public function testWithInvalidUserId()
@@ -30,6 +31,7 @@ class UserWithIdStrategyTest extends TestCase
         $params = [
             'userIds' => '123,456',
         ];
+        $constraints = [];
 
         $userMock = $this->createMock(Guard::class);
         $userMock->expects($this->once())->method('id')->willReturn(789);
@@ -38,7 +40,7 @@ class UserWithIdStrategyTest extends TestCase
 
         $strategy = new UserWithIdStrategy();
 
-        $this->assertFalse($strategy->isEnabled($params, $request));
+        $this->assertFalse($strategy->isEnabled($params, $constraints, $request));
     }
 
     public function testWithoutUserId()
@@ -46,12 +48,13 @@ class UserWithIdStrategyTest extends TestCase
         $params = [
             'userIds' => '123,456',
         ];
+        $constraints = [];
 
         $request = $this->createMock(Request::class);
         $request->expects($this->once())->method('user')->willReturn(null);
 
         $strategy = new UserWithIdStrategy();
 
-        $this->assertFalse($strategy->isEnabled($params, $request));
+        $this->assertFalse($strategy->isEnabled($params, $constraints, $request));
     }
 }
